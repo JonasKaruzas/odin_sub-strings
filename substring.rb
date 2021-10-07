@@ -1,11 +1,13 @@
 dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
 
 def substrings(string, hash)
-  result = {}
+  result = Hash.new(0)
 
   hash.each do |item|
-    if string.include? item
-      result[item] = hash.count(string)
+    string.split.each do |str_item|
+      if str_item.downcase.include? item.downcase
+        result[item] += hash.count(item)
+      end
     end
   end
 
@@ -13,4 +15,6 @@ def substrings(string, hash)
 end
 
 substrings("below", dictionary)
+
+substrings("Howdy partner, sit down! How's it going?", dictionary)
 
